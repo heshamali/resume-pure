@@ -1,0 +1,890 @@
+/*Global Rules:*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+:root {
+    --mainColor: #1d7ddf;
+    --blackColor: #3C444F;
+}
+/*Start Settings Box*/
+.settings {
+    position: fixed;
+    z-index: 10000;
+    top: 30px;
+    left: 15px;
+}
+.settings .night {
+    font-size: 25px;
+    background-color: #FFF;
+    padding: 5px 10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    color: var(--mainColor);
+    cursor: pointer;
+    position: relative;
+    z-index: 55;
+}
+.settings .options {
+    width: 44vh;
+    padding: 5px 10px;
+    position: absolute;
+    left: -124vh;
+    transition: all .5s ease-in-out;
+    top: 0;
+    background-color: #FFF;
+    height: 35px;
+    z-index: 54;
+}
+.settings .options.open {
+    left: 0;
+}
+.settings .options .color-list {
+    list-style: none;
+    text-align: center;
+}
+.settings .options .color-list li {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    opacity: 0.5;
+    display: inline-block;
+    cursor: pointer;
+}
+.settings .options .color-list li.active {
+    opacity: 1;
+}
+.settings .options .color-list li:first-child {
+    background-color: #1d7ddf;
+}
+.settings .options .color-list li:nth-child(2){
+    background-color: #1a9768;
+}
+.settings .options .color-list li:nth-child(3) {
+    background-color: #de2171;
+}
+.settings .options .color-list li:nth-child(4){
+    background-color: #e97116;
+}
+.settings .options .color-list li:nth-child(5) {
+    background-color: #43bca7;
+}
+
+/*Start Section Head*/
+.section-head {
+    text-align: center;
+    margin-top: 50px;
+}
+.section-head h2 {
+    font-size: 53px;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 65px;
+    position: relative;
+    font-family: "ubuntu", sans-serif;
+}
+.section-head h2::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 2px;
+    background-color: var(--mainColor);
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.section-head h2::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--mainColor);
+    border-radius: 50%;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFF;
+}
+.section-head p {
+    width: 550px;
+    margin: 0 auto 100px;
+    line-height: 2;
+    max-width: 100%;
+    color: #555e6a;
+}
+
+/*Start Header*/
+.header {
+    position: fixed;
+    z-index: 9990;
+}
+.header .toggle-icon {
+    display: none;
+    align-items: center;
+    position: fixed;
+    top: 30px;
+    right: 40px;
+}
+.header .toggle-icon i {
+    font-size: 25px;
+    cursor: pointer;
+    color: var(--blackColor);
+    transition: all 0.5s ease-in-out;
+}
+.header .toggle-icon i:hover {
+    color: var(--mainColor);
+}
+.header .open {
+    transform: translateX(0%);
+}
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 80px;
+    left: 0;
+    bottom: 0;
+    padding: 15px 15px 15px 0;
+    transition: all 0.5s ease-in-out;
+}
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav-menu ul li {
+    position: relative;
+}
+.nav-menu ul li a {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 50%;
+    padding: 10px 18px 10px 15px;
+    margin-bottom: 7px;
+    overflow: hidden;
+    color: var(--blackColor);
+    background-color: #CCD6E1;
+    font-size: 25px;
+    border: 1px solid var(--mainColor);
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.nav-menu ul li:hover a,
+.nav-menu ul li a:hover {
+    width: 100%;
+    background-color: var(--mainColor, #1d7ddf);
+    color: #FFF
+}
+.nav-menu ul li a span {
+    font-size: 15px;
+    margin-left: 7px;
+    position: relative;
+    left: 110px;
+    transition: all 0.1s ease-out;
+}
+.nav-menu ul li:hover span,
+.nav-menu ul li a:hover span {
+    left: 0;
+    animation: fromRight 2s ease-in-out;
+}
+.nav-menu .active > a {
+    background-color: var(--mainColor, #1d7ddf);
+    color: #FFF
+}
+@media (max-width: 991px) {
+    .nav-menu {
+        transform: translateX(-100%);
+    }
+    .nav-menu ul li a {
+        width: 100%;
+    }
+    .nav-menu ul li a span {
+        left: 0;
+    }
+    .nav-menu ul li:hover span,
+    .nav-menu ul li a:hover span {
+        left: 0;
+        animation: none;
+    }
+    .header .toggle-icon {
+        display: flex;
+    }
+}
+
+/*Start Hesham Section*/
+.hesham {
+    height: 750px;
+    background: url("../images/bc-hesham2.jpg") top right no-repeat fixed;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.hesham::before {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.hesham .hesham-con {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hesham .hesham-con h1 {
+    color: var(--mainColor, #1d7ddf);
+    font-size: 60px;
+    font-weight: 500;
+    font-family: 'ubuntu', sans-serif;
+
+}
+.hesham .hesham-con .frontend {
+    color: var(--mainColor);
+    font-size: 25px;
+    transition: all 1s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    animation: developer 3s ease-in-out;
+    animation-iteration-count: 7;
+    margin-bottom: 35px;
+}
+.hesham .hesham-con p {
+    color: #556471;
+}
+.hesham .hesham-con ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 9991;
+}
+.hesham .hesham-con ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    margin: 15px 10px;
+    left: -3%;
+}
+.hesham .hesham-con ul li a {
+    text-decoration: none;
+    font-size: 40px;
+    color: var(--blackColor);
+}
+.hesham .hesham-con ul li:hover a {
+    color: var(--mainColor);
+    animation: social 3s ease-in-out;
+    animation-iteration-count: 7;
+}
+@media (max-width: 991px) {
+    .hesham .hesham-con h1 {
+        font-size: 45px;
+        text-align: center;
+    }
+}
+
+/*Start About Section*/
+.about-section {
+    margin: 55px 0;
+    overflow: hidden;
+}
+.about-section .about-con p:first-of-type{
+    text-align: center;
+}
+.about-section .about-con .info p {
+    text-align: left;
+}
+.about-section .about-con .info ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+.about-section .about-con .info ul li {
+    margin-bottom: 15px;
+    font-family: 'ubuntu', sans-serif;
+}
+.about-section .about-con .info ul li i {
+    margin-right: 10px;
+    color: var(--mainColor);
+    font-size: 21px;
+}
+.about-section .about-con .info .hobbies {
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 9992;
+}
+.about-section .about-con .info .hobbies i {
+    margin-right: 10px;
+    font-size: 26px;
+    color: var(--blackColor);
+}
+.about-section .about-con .info .hobbies i:hover {
+    color: var(--mainColor);
+    animation: hobby 2s ease-in-out;
+    animation-iteration-count: infinite;
+}
+.about-section .about-con .image img {
+    width: 100%;
+    height: 100%;
+}
+@media (max-width: 991px) {
+    .about-section .about-con .info .hobbies {
+        margin: 5px auto;
+        text-align: center;
+    }
+}
+
+/*Start Skills Section*/
+.skills {
+    margin: 50px 0;
+    overflow: hidden;
+}
+.skills .skills-con .skill {
+    margin: 20px 0;
+    display: flex;
+    align-items: first baseline;
+    justify-content: space-between;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.skills .skills-con .skill h3 {
+    font-size: .9rem;
+    color: var(--mainColor);
+    padding-right: 10px;
+}
+.skills .skills-con .skill h3 i {
+    margin-right: 7px;
+    font-size: 1.2rem;
+    position: relative;
+    top: 4px;
+}
+.skills .skills-con .skill .progress1 {
+    height: 7px;
+    background-color: #d5dadd;
+    position: relative;
+    flex-grow: 1;
+}
+.skills .skills-con .skill .progress1 span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--mainColor, #1d7ddf);
+    transition: all 0.7s ease-in-out;
+}
+.skills .skills-con .skill span {
+    color: #e3e3e3;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background-color: var(--mainColor, #1d7ddf);
+    position: relative;
+    left: 7px;
+}
+
+/*Start Resume Section*/
+.resume {
+    margin: 50px 0;
+    overflow: hidden;
+    background: url("../images/pattern2.svg") top right no-repeat fixed;
+    background-size: cover;
+    position: relative;
+}
+.resume::before {
+    content: "";
+    background-color: rgba(198, 211, 217, 0.4);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.resume .timeline {
+    position: relative;
+    margin-bottom: 90px;
+}
+.resume .timeline:before {
+    content: "";
+    width: 2px;
+    height: 100%;
+    background-color: var(--mainColor, #1d7ddf);
+    position: absolute;
+    left: 50%;
+    top: 70px;
+}
+.resume .timeline .timeline-title {
+    text-align: center;
+    color: #d8dce1;
+    background-color: var(--blackColor);
+    width: 19%;
+    margin: 20px auto;
+    padding: 5px 0;
+    border-radius: 5px;
+    font-size: 1.3rem;
+}
+.resume .timeline .year {
+    text-align: center;
+    margin: 20px auto;
+    background-color: var(--mainColor, #1d7ddf);
+    border-radius: 5px;
+    color: #F4F4F4;
+    width: 50px;
+    font-weight: bold;
+    padding: 2px 5px
+}
+.resume .timeline .left-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 25px;
+    transition: all 0.9s ease-in-out;
+    transform: translateX(-70%);
+}
+.resume .timeline .right-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 25px;
+    transition: all 0.5s ease-in-out;
+    transform: translateX(70%);
+}
+.resume .timeline .t-content {
+    width: calc(50% - 25px);
+    position: relative;
+    background-color: #FFF;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+}
+.resume .timeline .right-content .t-content:before,
+.resume .timeline .left-content .t-content:before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: #FFF;
+    border: 2px solid var(--mainColor);
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+}
+.resume .timeline .right-content .t-content:before {
+    left: -32px;
+}
+.resume .timeline .left-content .t-content:before {
+    right: -33px;
+}
+.resume .timeline .right-content .t-content:after {
+    content: '';
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent #FFF transparent transparent;
+    position: absolute;
+    right: 100%;
+    top: 18px;
+}
+.resume .timeline .left-content .t-content:after {
+    content: '';
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent transparent transparent #FFF;
+    position: absolute;
+    left: 100%;
+    top: 18px;
+}
+.resume .timeline .t-content h4 {
+    font-size: 1.1rem;
+}
+.resume .timeline .t-content p {
+    font-size: 0.9rem;
+    text-align: left;
+}
+@media (max-width: 991px) {
+    .resume .timeline .timeline-title {
+        width: 53%;
+        font-size: 1.2rem;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .resume .timeline .timeline-title {
+        width: 25%;
+    }
+}
+
+/*Start Portfolio Section*/
+.portfolio {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.portfolio .port-section .port-filter {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 9993;
+}
+.portfolio .port-section .port-filter li {
+    padding: 5px 10px;
+    margin: 0 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.portfolio .port-section .port-filter li:not(.active):hover {
+    color: var(--mainColor);
+}
+.portfolio .port-section .port-filter .active {
+    background-color: var(--mainColor);
+    color: #FFF;
+    border-radius: 5px;
+}
+.portfolio .port-section .port-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: wrap;
+}
+.portfolio .port-section .image {
+    position: relative;
+    margin: 10px 15px;
+    overflow: hidden;
+    z-index: 1;
+}
+.portfolio .port-section .image .box {
+    max-width: 333px;
+    max-height: 250px;
+}
+.portfolio .port-section .image .box::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    left: 30px;
+    bottom: 30px;
+    background-color: rgba(234, 240, 249, 0.9);
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    border-radius: 5px;
+}
+.portfolio .port-section .image .box:hover:before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+}
+.portfolio .port-section .image .box img {
+    width: 365px;
+    height: 100%;
+}
+.portfolio .port-section .image .box .caption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 3;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.portfolio .port-section .image .box .caption::before {
+    z-index: 9994;
+    top: 70px;
+    right: 70px;
+    border-top: 5px solid var(--mainColor);
+    border-right: 5px solid var(--mainColor);
+
+}
+.portfolio .port-section .image .box .caption::after {
+    z-index: 9993;
+    bottom: 70px;
+    left: 70px;
+    border-bottom: 5px solid var(--mainColor);
+    border-left: 5px solid var(--mainColor);
+}
+.portfolio .port-section .image .box .caption::before,
+.portfolio .port-section .image .box .caption::after {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    transition: all 1s ease-in-out;
+    display: block;
+}
+.portfolio .port-section .image .box:hover .caption::before {
+    top: 0;
+    right: 0;
+}
+.portfolio .port-section .image .box:hover .caption::after {
+    bottom: 0;
+    left: 0;
+}
+.portfolio .port-section .image .box .caption .port-links a {
+    font-size: 35px;
+    color: #4E5E6F;
+    padding: 5px 15px;
+    transition: all 0.5s ease-in-out;
+}
+.portfolio .port-section .image .box .caption .port-links a:hover {
+    color: var(--mainColor);
+}
+.portfolio .port-section .image .box:hover .caption {
+    opacity: 1;
+}
+
+/*Start Contact Section*/
+.contact {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.contact .contact-con .content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    position: relative;
+    z-index: 9994;
+}
+.contact .contact-con .content .form {
+    flex-basis: 70%;
+}
+.contact .contact-con .content .form .c-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+.contact .contact-con .content .form textarea.c-input {
+    height: 200px;
+}
+.contact .contact-con .content .form input[type="submit"] {
+    padding: 11px;
+    border: 1px solid var(--mainColor);
+    border-radius: 5px;
+    background-color: var(--mainColor);
+    color: #FFF;
+    display: flex;
+    margin-left: auto;
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+}
+.contact .contact-con .content .form input[type="submit"]:hover {
+    border: 1px solid var(--mainColor);
+    border-radius: 5px;
+    background-color: #FFF;
+    color: var(--mainColor);
+}
+.contact .contact-con .content .info {
+    flex-basis: 25%;
+}
+.contact .contact-con .content .info div {
+    margin-bottom: 25%;
+    transition: all 0.5s ease-in-out;
+}
+.contact .contact-con .content .info div:hover h4 {
+    color: var(--mainColor);
+}
+.contact .contact-con .content .info h4 {
+    text-transform: uppercase;
+    font-size: 19px;
+    margin-bottom: 15px;
+    color: #3F4B62;
+}
+.contact .contact-con .content .info address {
+    margin-bottom: 15px;
+    color: #667180;
+}
+.contact .contact-con .content .info span {
+    margin-bottom: 15px;
+    color: #667180;
+}
+@media (max-width: 991px) {
+    .contact .contact-con .content {
+        flex-direction: column;
+    }
+}
+
+/*Start Footer*/
+.footer {
+    margin-top: 50px;
+    background-color: #C1C6CE;
+}
+.footer .footer-con {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.footer .footer-con .copy-rights span {
+    color: #323948;
+    margin-right: 15px;
+}
+.footer .footer-con .copy-rights span:nth-of-type(2) {
+    color: var(--mainColor);
+}
+.footer .footer-con .social {
+    padding: 5px 15px;
+}
+.footer .footer-con .social a {
+    display: inline-block;
+    color: #4b5764;
+    font-size: 23px;
+    margin-right: 15px;
+    margin-top: 6px;
+    transition: all .5s ease-in-out;
+}
+.footer .footer-con .social a:hover {
+    color: var(--mainColor);
+}
+@media (max-width: 991px) {
+    .footer .footer-con {
+        flex-direction: column;
+        padding-top: 18px;
+    }
+}
+
+/*Start Scroll Top Button*/
+.up {
+    font-size: 45px;
+    color: var(--blackColor);
+    position: fixed;
+    right: 10px;
+    bottom: 30px;
+    transition: 0.7s ease-in-out;
+    cursor: pointer;
+    display: none;
+    z-index: 99999;
+}
+.show {
+    display: block;
+}
+.up:hover {
+    color: var(--mainColor);
+}
+
+/*--- Start Fonts ---*/
+@font-face {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    src: url("../fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf")
+}
+
+/* My Frame Work And Fonts Family */
+p, h1, h2, h3, h4, span {
+    font-family: 'Poppins', sans-serif;
+}
+h3, h4, h5 {
+    color: var(--mainColor, #1d7ddf)
+}
+
+@keyframes fromRight {
+    0% {
+        transform: translateX(50px);
+    }
+    50% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+@keyframes developer {
+    0% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(10px);
+    }
+}
+@keyframes social {
+    0% {
+        transform: translateY(5px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(5px);
+    }
+}
+@keyframes hobby {
+    0% {
+        transform: scale(1.3, 1.3);
+    }
+    50% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(1.3, 1.3);
+    }
+}
+
+/*
+    *font-family: 'Cabin', sans-serif;
+    *font-family: 'Cairo', sans-serif;
+    *font-family: 'Dosis', sans-serif;
+    *font-family: 'Lato', sans-serif;
+    *font-family: 'Merriweather', serif;
+    *font-family: 'Noto Sans', sans-serif;
+    *font-family: 'Noto Sans JP', sans-serif;
+    *font-family: 'Open Sans', sans-serif;
+    *font-family: 'Poppins', sans-serif;
+    *font-family: 'Roboto', sans-serif;
+    *font-family: 'Source Sans Pro', sans-serif;
+    *font-family: 'Tajawal', sans-serif;
+    *font-family: 'Ubuntu', sans-serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-family: 'Poppins', sans-serif;
+*/
+
+/*Media query*/
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}
